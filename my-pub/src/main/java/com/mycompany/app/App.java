@@ -8,8 +8,12 @@ public class App {
   private final static String QUEUE_NAME = "hello";
 
   public static void main(String[] argv) throws Exception {
+
+    String uri = "amqps://xoksfvsb:OsxAoMLf-4tA8vrMDU9mf183dRUK8mNC@jackal.rmq.cloudamqp.com/xoksfvsb";
+
     ConnectionFactory factory = new ConnectionFactory();
-    factory.setHost("localhost");
+    factory.setUri(uri);
+
     try (Connection connection = factory.newConnection();
          Channel channel = connection.createChannel()) {
       channel.queueDeclare(QUEUE_NAME, false, false, false, null);
